@@ -1,0 +1,12 @@
+orange = #fe5e00
+dr orange = #fe5d00eb
+
+dim orange = #ffa810
+light dim orange = #ffe4b5
+white = #ffffff
+
+
+dark orange = #d57236
+
+
+purple = #9f70fc
