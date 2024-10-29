@@ -51,6 +51,7 @@ const LoginPage = () => {
         localStorage.setItem('role', data.tokenAuth.user.role);  
         // localStorage.setItem('userId',data.tokenAuth.user.id);
         navigate('/home');  
+        window.location.reload(false);
       }
     },
   });

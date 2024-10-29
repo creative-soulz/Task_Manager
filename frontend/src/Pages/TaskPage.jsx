@@ -236,7 +236,7 @@ const TaskPage1 = () => {
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <div>
-        <ProjectPage />
+        <ProjectPage taskrefetch={taskrefetch} />
       </div>
       {/* opton to create task */}
       <div className="flex bg-white rounded-lg border   shadow px-4 h-20 items-center justify-start gap-7">

@@ -22,8 +22,8 @@ const Header = () => {
     <div  onClick={() => setOpenMenu(!openMenu)} >
     <FaUserCircle className='text-4xl  mr-5 lg:mr-8 cursor-pointer '/>
     <div className={  `bg-[#ffffff] shadow-md text-black  flex flex-col items-center justify-center p-2 w-32 right-3 mt-1 rounded h-24 absolute  text-center font-bold  ${openMenu ? 'block' : 'hidden'}` }>
-      <div onClick={() => navigate('/profile')} className='h-1/2 flex items-center justify-center w-full rounded-t hover:text-white hover:bg-[#ffa710] transition-all'>Profile</div>
-      <div onClick={logoutHandler} className='h-1/2 flex items-center justify-center w-full rounded-b hover:text-white hover:bg-[#ffa810] transition-all'>Logout</div>
+      <div onClick={() => navigate('/profile')} className='h-1/2 flex cursor-pointer items-center justify-center w-full rounded-t hover:text-white hover:bg-[#ffa710] transition-all'>Profile</div>
+      <div onClick={logoutHandler} className='h-1/2 flex items-center cursor-pointer justify-center w-full rounded-b hover:text-white hover:bg-[#ffa810] transition-all'>Logout</div>
     </div>
     </div>
 

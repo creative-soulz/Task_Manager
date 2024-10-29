@@ -8,16 +8,15 @@ import ProjectModel from '../components/ProjectModel';
 import { MdModeEdit, MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
 
-const ProjectPage = () => {
-  const role = localStorage.getItem('role');
-  
+const ProjectPage = ({ taskrefetch }) => {
+  const role = localStorage.getItem("role");
+
   const GET_PROJECTS = gql`
     query getProjects {
       projects {
         projectName
         dueDate
         id
-        
       }
     }
   `;
@@ -35,7 +34,7 @@ const ProjectPage = () => {
   const [openTaskModel, setOpenTaskModel] = useState(false);
   const [projectId, setProjectId] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-  
+
   // Get refetch from useQuery to manually refetch the data after mutation
   const { loading, error, data, refetch } = useQuery(GET_PROJECTS);
 
@@ -48,22 +47,28 @@ const ProjectPage = () => {
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'This will permanently delete the project.',
-      icon: 'warning',
+      title: "Are you sure?",
+      text: "This will permanently delete the project.",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!'
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        await deleteProject({ variables: { projectId: parseInt(id) } }); // Ensure ID is an integer
-        refetch(); // Refetch the projects after deletion
-        Swal.fire('Deleted!', 'Your project has been deleted.', 'success');
-      }
-    }).catch((error) => {
-      Swal.fire('Error!', `There was an error deleting your project: ${error.message}`, 'error');
-    });
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          await deleteProject({ variables: { projectId: parseInt(id) } }); // Ensure ID is an integer
+          refetch(); // Refetch the projects after deletion
+          Swal.fire("Deleted!", "Your project has been deleted.", "success");
+        }
+      })
+      .catch((error) => {
+        Swal.fire(
+          "Error!",
+          `There was an error deleting your project: ${error.message}`,
+          "error"
+        );
+      });
   };
 
   const handleUpdate = (project) => {
@@ -140,6 +145,7 @@ const ProjectPage = () => {
         ))}
         {openTaskModel && (
           <TaskModel
+            taskrefetch={taskrefetch}
             projectId={projectId}
             openTaskModel={openTaskModel}
             setOpenTaskModel={setOpenTaskModel}
