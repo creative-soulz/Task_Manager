@@ -1,6 +1,6 @@
-========================================================================================================================================
-Task Manager Application
-************************
+
+#Task Manager Application 
+
 
     This is a Task Manager Application built with Django as the backend, GraphQL using Graphene for the API layer, and React.js for the frontend. Tailwind CSS is used for styling, providing a clean, modern look with minimal custom CSS.
 ========================================================================================================================================
